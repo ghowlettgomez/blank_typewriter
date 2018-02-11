@@ -54,9 +54,10 @@ def get_business_name(keyword, location):
 def get_results(query):
 	try:
 		response = GoogleSearch().search(query)
-		res = '\n'.join([result.title + ':' + result.content for result in response.results])
+		res = ' \n'.join([result.title for result in response.results])
 		return res
-	except:
+	except Exception, e:
+		return e
 		return 'There was an error in the code.'
 
 @app.route('/sing_a_song')

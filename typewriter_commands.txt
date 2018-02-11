@@ -21,6 +21,12 @@ Api Endpoint:
 https://typewriter-blank.herokuapp.com/get_business_name/<keyword>/<location>
 
 Command: 
+Google <query>
+Description: Returns the titles for the query you just made on google.
+API Endpoint:
+https://typewriter-blank.herokuapp.com/google/<query>
+
+Command: 
 Sing a Song
 Description: 
 A song will be sung to you
