@@ -13,3 +13,15 @@ Description:
 Given a currency name, returns the current price of that crypto currency.
 Api Endpoint:
 https://typewriter-blank.herokuapp.com/get_crypto_price/<currency_name>
+
+Command:
+Business Name: <keyword>: <location>
+Description: given a keyword and a location, use yelp's api to return all of the businesses in that area
+Api Endpoint:
+https://typewriter-blank.herokuapp.com/get_business_name/<keyword>/<location>
+
+Command:
+Tell a Joke
+Descrition: The api will tell a joke.
+Api Endpoint:
+https://typewriter-blank.herokuapp.com/tell_a_joke/
