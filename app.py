@@ -54,7 +54,7 @@ def get_business_name(keyword, location):
 def get_results(query):
 	try:
 		response = GoogleSearch().search(query)
-		res = ', '.join([result.title for result in response.results])
+		res = '\n'.join([result.title + ':' + result.content for result in response.results])
 		return res
 	except:
 		return 'There was an error in the code.'
