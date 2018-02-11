@@ -13,7 +13,7 @@ def hello():
 def get_weather(location):
 	try:
 		weather_text = Weather().lookup_by_location(location).condition().text()
-		return '"The weather in "' + str(location) + " is " + weather_text + '."'
+		return '"The weather in ' + str(location) + " is " + weather_text + '."'
 	except Exception, e:
 		return '"There is no data about that location currently."'
 
