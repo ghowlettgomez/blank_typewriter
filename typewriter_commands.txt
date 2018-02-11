@@ -1,0 +1,11 @@
+Protocol for Typewriter Commands
+
+Command:
+weather: <location>
+Description:
+Returns the current weather in the given location.
+
+Command:
+crypto price: <currency_name>
+Description:
+Given a currency name, returns the current price of that crypto currency.
