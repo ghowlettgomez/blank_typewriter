@@ -53,11 +53,11 @@ def get_business_name(keyword, location):
 @app.route('/google/<query>')
 def get_results(query):
 	try:
-		response = GoogleSearch().search(query)
-		res = ', '.join([result.title for result in response.results])
-		return res
+	response = GoogleSearch().search(query)
+	res = ', '.join([result.title for result in response.results])
+	return res
 	except:
-		return 'There was an error'
+		return 'There was an error in the code.'
 
 @app.route('/sing_a_song')
 def play_music():
