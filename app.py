@@ -1,7 +1,20 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, request, current_app
 import json 
 from weather import Weather
 import requests
+
+#this function copied from https://gist.github.com/farazdagi/1089923
+def support_jsonp(f):
+    """Wraps JSONified output for JSONP"""
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        callback = request.args.get('callback', False)
+        if callback:
+            content = str(callback) + '(' + str(f().data) + ')'
+            return current_app.response_class(content, mimetype='application/json')
+        else:
+            return f(*args, **kwargs)
+    return decorated_function
 
 app = Flask(__name__)
 
@@ -28,7 +41,7 @@ def get_crypto(currency):
 		return jsonify({'payload': 'We do not have information for that currency.'})
 
 @app.route('/get_business_name/<keyword>/<location>')
-def get_business(keyword, location):
+def get_business_name(keyword, location):
 	try:
 		search_term = 'https://api.yelp.com/v3/businesses/search'
 		params = {
@@ -46,6 +59,8 @@ def get_business(keyword, location):
 	except Exception, e:
 		return e
 		return jsonify({'payload' : 'We do not have information about anything about that.'})
+
+@app.route('/get_business_reviews/')
 
 @app.route('/tell_a_joke')
 def tell_a_joke():
