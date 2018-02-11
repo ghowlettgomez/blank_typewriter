@@ -3,20 +3,22 @@ import json
 from weather import Weather
 import requests
 
-#this function copied from https://gist.github.com/farazdagi/1089923
-def support_jsonp(f):
-    """Wraps JSONified output for JSONP"""
-    @wraps(f)
+app = Flask(__name__)
+
+#this function copied from http://flask.pocoo.org/snippets/79/
+def jsonp(func):
+    """Wraps JSONified output for JSONP requests."""
+    @wraps(func)
     def decorated_function(*args, **kwargs):
         callback = request.args.get('callback', False)
         if callback:
-            content = str(callback) + '(' + str(f().data) + ')'
-            return current_app.response_class(content, mimetype='application/json')
+            data = str(func(*args, **kwargs).data)
+            content = str(callback) + '(' + data + ')'
+            mimetype = 'application/javascript'
+            return app.response_class(content, mimetype=mimetype)
         else:
-            return f(*args, **kwargs)
+            return func(*args, **kwargs)
     return decorated_function
-
-app = Flask(__name__)
 
 @app.route("/")
 def hello():
