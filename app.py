@@ -2,6 +2,7 @@ from flask import Flask, jsonify, redirect, request, current_app
 import json 
 from weather import Weather
 import requests
+from googlesearch.googlesearch import GoogleSearch
 
 app = Flask(__name__)
 
@@ -48,6 +49,15 @@ def get_business_name(keyword, location):
 		return  res
 	except Exception, e:
 		return  'We do not have information about anything about that.'
+
+@app.route('/google/<query>')
+def get_results(query):
+	try:
+		response = GoogleSearch().search(query)
+		res = ', '.join([result.title for result in response.results])
+		return res
+	except:
+		return 'There was an error'
 
 @app.route('/sing_a_song')
 def play_music():

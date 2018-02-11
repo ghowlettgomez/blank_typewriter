@@ -19,6 +19,8 @@ requests="*"
 urllib3="*"
 weather-api="*"
 Werkzeug="*"
+search_google="*"
+search_google = { git = 'https://github.com/MarioVilas/googlesearch.git', ref = '1.0', editable = true }
 
 [requires]
 

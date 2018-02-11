@@ -20,6 +20,13 @@ Description: given a keyword and a location, use yelp's api to return all of the
 Api Endpoint:
 https://typewriter-blank.herokuapp.com/get_business_name/<keyword>/<location>
 
+Command: 
+Sing a Song
+Description: 
+A song will be sung to you
+Api Endpoint
+https://typewriter-blank.herokuapp.com/sing_a_song
+
 Command:
 Tell a Joke
 Descrition: The api will tell a joke.
