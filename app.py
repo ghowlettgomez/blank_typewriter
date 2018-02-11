@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return 1
+    return "1"
 
 @app.route("/weather/<location>")
 def get_weather(location):
